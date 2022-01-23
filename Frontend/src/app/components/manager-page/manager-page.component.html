@@ -1,0 +1,12 @@
+<app-add-to-modal></app-add-to-modal>
+<app-add-manager-modal></app-add-manager-modal>
+<div class="button-wrapper-1">
+  <div class="button-wrapper-2">
+    <button class="button" (click)="addTo()">Добавить ТО</button>
+    <button class="button" *ngIf="isAdmin" (click)="addManager()">
+      Добавить менеджера
+    </button>
+  </div>
+  <button class="button exit-btn">Выйти</button>
+</div>
+<app-to-view></app-to-view>

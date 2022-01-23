@@ -1,0 +1,54 @@
+<div class="modal-container" *ngIf="state.addToVisible">
+  <div class="modal-cont">
+    <div class="cancel-button" (click)="close()">
+      <img src="assets\images\cancel.png" class="cancel-picture" alt="cancel" />
+    </div>
+    <div class="global-container">
+      <div class="header label">Добавление ТО</div>
+      <div class="container">
+        <div class="input-container">
+          <label class="label" for="second-name">Фамилия</label>
+          <input
+            id="second-name"
+            class="input"
+            type="text"
+            placeholder="Фамилия"
+          />
+          <label class="label" for="first-name">Имя</label>
+          <input id="first-name" class="input" type="text" placeholder="Имя" />
+          <label class="label" for="middle-name">Отчество</label>
+          <input
+            id="middle-name"
+            class="input"
+            type="text"
+            placeholder="Отчество"
+          />
+          <label class="label" for="car-plate">Автомобильный номер</label>
+          <input
+            id="car-plate"
+            class="input"
+            type="text"
+            placeholder="Автомобильный номер"
+          />
+        </div>
+        <div class="input-container">
+          <label class="label" for="sts-ser">СТС серия</label>
+          <input id="sts-ser" class="input" type="text" placeholder="Серия" />
+          <label class="label" for="sts-number">СТС номер</label>
+          <input
+            id="sts-number"
+            class="input"
+            type="text"
+            placeholder="Номер"
+          />
+          <label class="label" for="vin">VIN</label>
+          <input id="vin" class="input" type="text" placeholder="VIN" />
+          <label class="label" for="model">Марка</label>
+          <input id="model" class="input" type="text" placeholder="Марка" />
+        </div>
+      </div>
+      <button class="button">Добавить</button>
+    </div>
+  </div>
+  <div class="modal-background"></div>
+</div>

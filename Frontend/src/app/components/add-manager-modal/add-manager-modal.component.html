@@ -1,0 +1,23 @@
+<div class="modal-container" *ngIf="state.addManagerVisible">
+  <div class="modal-cont">
+    <div class="cancel-button" (click)="close()">
+      <img src="assets\images\cancel.png" class="cancel-picture" alt="cancel" />
+    </div>
+    <div class="global-container">
+      <div class="container">
+        <div class="header label">Добавление менеджера</div>
+        <label class="label" for="login">Логин</label>
+        <input id="login" class="input" type="text" placeholder="Логин" />
+        <label class="label" for="password">Пароль</label>
+        <input
+          id="password"
+          class="input"
+          type="password"
+          placeholder="Пароль"
+        />
+        <button class="button">Добавить</button>
+      </div>
+    </div>
+  </div>
+  <div class="modal-background"></div>
+</div>

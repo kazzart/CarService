@@ -1,0 +1,97 @@
+@use "../../../styles";
+
+.container {
+  box-sizing: border-box;
+}
+
+.head {
+  padding: 2vh;
+  display: grid;
+  grid-template-columns: 4.5vmin repeat(3, 1fr) 1.85vh;
+  width: 100%;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.arrow {
+  width: 1.85vh;
+  height: 1.85vh;
+}
+
+.body {
+  box-sizing: border-box;
+  overflow-y: hidden;
+  margin: 0 0vh;
+  border: 1px solid rgba(111, 119, 130, 0.914);
+  background: rgb(13, 17, 23);
+  border-radius: 0 0 1vh 1vh;
+  padding: 1vh;
+}
+
+.info-container {
+  display: flex;
+}
+
+.grid-container {
+  flex: 5 1 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 3vh;
+  border-right: 0.25vh solid #000;
+}
+
+.options-container {
+  padding-left: 0.5vh;
+  flex: 2 1 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: 3vh;
+  box-sizing: border-box;
+}
+
+.entry {
+  display: flex;
+}
+
+.body-data {
+  margin-left: 0.5vh;
+}
+
+.body-label,
+.options-header {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.body-data,
+.option {
+  font-size: 0.9rem;
+}
+
+.button-wrapper {
+  display: flex;
+  column-gap: 20px;
+  width: 100%;
+  justify-content: center;
+  justify-items: center;
+  margin: 2vh 0 0 0;
+}
+
+.green-button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  width: 30%;
+  background: rgb(8, 86, 165);
+  font-weight: 600;
+  padding: 1.2vmin 2.96vmin;
+  display: flex;
+  border-radius: 1.2vmin;
+  font-size: 0.9rem;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+  align-items: center;
+  font-weight: 600;
+  color: rgb(201, 209, 217);
+}

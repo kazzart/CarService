@@ -1,0 +1,15 @@
+<div class="main-container">
+  <div class="container" *ngIf="to">
+    <div class="greetings">
+      Здравствуйте, {{ to.sts.client.first_name }}<br />Здесь отображается
+      информация о Вашем ТО
+    </div>
+    <div class="initials">
+      ФИО: {{ to.sts.client.second_name }} {{ to.sts.client.first_name }}
+      {{ to.sts.client.middle_name }}
+    </div>
+    <div class="car-plate">Номер автомобиля: {{ to.sts.car_plate }}</div>
+    <div class="model">Марка: {{ to.sts.model }}</div>
+    <div class="status">Статус: {{ to.status.name }}</div>
+  </div>
+</div>

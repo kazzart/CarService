@@ -1,0 +1,61 @@
+<div
+  class="container"
+  *ngIf="to"
+  [style.background]="index % 2 === 0 ? 'rgb(22, 27, 34)' : 'rgb(38, 44, 50)'"
+  [style.padding-bottom]="isExpanded === true ? '2vh' : '0vh'"
+>
+  <div class="head" (click)="toggleExpand()">
+    <div class="head-entry">{{ to.id }}</div>
+    <div class="head-entry">
+      {{ to.sts.client.first_name }}
+    </div>
+    <div class="head-entry">{{ to.sts.car_plate }}</div>
+    <div class="head-entry">{{ to.status.name }}</div>
+    <img
+      src="assets/images/fold.svg"
+      class="arrow"
+      [style.transform]="
+        isExpanded === true ? 'rotate(180deg)' : 'rotate(0deg)'
+      "
+    />
+  </div>
+  <div class="body" *ngIf="isExpanded === true">
+    <div class="info-container">
+      <div class="grid-container">
+        <div class="entry">
+          <div class="body-label">ФИО:</div>
+          <div class="body-data">
+            {{ to.sts.client.second_name }} {{ to.sts.client.first_name }}
+            {{ to.sts.client.middle_name }}
+          </div>
+        </div>
+        <div class="entry">
+          <div class="body-label">Телефон:</div>
+          <div class="body-data">
+            {{ to.sts.client.tel_number }}
+          </div>
+        </div>
+        <div class="entry">
+          <div class="body-label">СТС:</div>
+          <div class="body-data">{{ to.sts.ser }} {{ to.sts.number }}</div>
+        </div>
+        <div class="entry">
+          <div class="body-label">VIN:</div>
+          <div class="body-data">{{ to.sts.vin }}</div>
+        </div>
+        <div class="entry">
+          <div class="body-label">Марка автомобиля:</div>
+          <div class="body-data">{{ to.sts.model }}</div>
+        </div>
+        <div class="entry">
+          <div class="body-label">Статус:</div>
+          <div class="body-data">{{ to.status.name }}</div>
+        </div>
+      </div>
+    </div>
+    <div class="button-wrapper">
+      <button class="green-button button">Выбрать статус</button>
+      <button class="green-button button">Скопировать ссылку</button>
+    </div>
+  </div>
+</div>
