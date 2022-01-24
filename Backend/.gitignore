@@ -140,4 +140,3 @@ cython_debug/
 # local migrations
 sql_app.db
 /app/database/migrations/versions/*.py
-app/files/
