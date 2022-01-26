@@ -1,8 +1,7 @@
 from fastapi import APIRouter, Depends, status
 from models.status import (
     Status,
-    StatusCreate,
-    StatusQuery
+    StatusCreate
 )
 from services.status import StatusService
 from services.manager import get_current_manager
@@ -23,6 +22,11 @@ def get_status(status_id: int, service: StatusService = Depends()):
     return service.get_status(status_id)
 
 
-@router.get('/by_name', response_model=Status)
+@router.get('/by_name/', response_model=Status)
 def get_status_by_name(name: str, service: StatusService = Depends()):
     return service.get_status_by_name(name)
+
+
+@router.get('/all', response_model=list[Status])
+def get_statuses(service: StatusService = Depends()):
+    return service.get_statuses()

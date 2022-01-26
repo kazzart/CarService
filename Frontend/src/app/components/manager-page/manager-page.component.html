@@ -1,12 +1,13 @@
 <app-add-to-modal></app-add-to-modal>
 <app-add-manager-modal></app-add-manager-modal>
-<div class="button-wrapper-1">
+<div class="button-wrapper-1" *ngIf="manager">
   <div class="button-wrapper-2">
-    <button class="button" (click)="addTo()">Добавить ТО</button>
-    <button class="button" *ngIf="isAdmin" (click)="addManager()">
+    <button class="button" (click)="addToModal()">Добавить ТО</button>
+    <button class="button" *ngIf="manager.is_admin" (click)="addManagerModal()">
       Добавить менеджера
     </button>
   </div>
-  <button class="button exit-btn">Выйти</button>
+  <button class="button exit-btn" (click)="logout()">Выйти</button>
 </div>
-<app-to-view></app-to-view>
+<app-to-view [tos]="tos"></app-to-view>
+<app-choose-status-modal></app-choose-status-modal>

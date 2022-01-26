@@ -10,6 +10,7 @@
       {{ to.sts.client.first_name }}
     </div>
     <div class="head-entry">{{ to.sts.car_plate }}</div>
+    <div class="head-entry">{{ to.date | date: "short" }}</div>
     <div class="head-entry">{{ to.status.name }}</div>
     <img
       src="assets/images/fold.svg"
@@ -54,8 +55,12 @@
       </div>
     </div>
     <div class="button-wrapper">
-      <button class="green-button button">Выбрать статус</button>
-      <button class="green-button button">Скопировать ссылку</button>
+      <button class="green-button button" (click)="get_to_url()">
+        Скопировать ссылку
+      </button>
+      <button class="green-button button" (click)="chooseStatus(to)">
+        Выбрать статус
+      </button>
     </div>
   </div>
 </div>

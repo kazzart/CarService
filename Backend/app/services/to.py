@@ -1,14 +1,15 @@
-from fastapi import Depends, HTTPException, status
-from database import get_session
-from sqlalchemy.orm import Session
-from models.to import ToCreate, To
-from services.sts import StsService
 import tables
-from typing import List
+from database import get_session
+from fastapi import Depends, HTTPException, status
+from models.to import To, ToCreate
+from sqlalchemy.orm import Session
+
+from services.sts import StsService
 
 
 class ToService:
-    def __init__(self, session: Session = Depends(get_session), sts_service: StsService = Depends()):
+    def __init__(self, session: Session = Depends(get_session),
+                 sts_service: StsService = Depends()):
         self.session = session
         self.sts_service = sts_service
 
@@ -39,9 +40,15 @@ class ToService:
             raise HTTPException(status_code=status.HTTP_404_NOT_FOUND)
         return self.repack(to)
 
-    def get_tos(self) -> List[To]:
+    def get_tos(self) -> list[To]:
         tos = self.session.query(
-            tables.To).all()
+            tables.To).order_by(tables.To.date.desc()).all()
         for i in range(len(tos)):
             tos[i] = self.repack(tos[i])
         return tos
+
+    def change_status(self, to_id: int, status_id: int) -> To:
+        to = self.session.query(tables.To).filter_by(id=to_id).first()
+        to.status_id = status_id
+        self.session.commit()
+        return self.repack(to)

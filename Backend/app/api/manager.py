@@ -11,7 +11,8 @@ from services.manager import ManagerService, get_current_manager
 router = APIRouter(prefix='/manager')
 
 
-@router.post('/sign_up/', response_model=Token, status_code=status.HTTP_201_CREATED)
+@router.post('/sign_up/', response_model=Token,
+             status_code=status.HTTP_201_CREATED)
 def sign_up(
     manager_data: ManagerCreate,
     service: ManagerService = Depends()
@@ -19,7 +20,8 @@ def sign_up(
     return service.register_new_manager(manager_data)
 
 
-@router.post('/sign_in/', response_model=Token, status_code=status.HTTP_201_CREATED)
+@router.post('/sign_in/', response_model=Token,
+             status_code=status.HTTP_201_CREATED)
 def sign_in(
     form_data: OAuth2PasswordRequestForm = Depends(),
     service: ManagerService = Depends()
@@ -30,7 +32,7 @@ def sign_in(
     )
 
 
-@router.get('/{manager_id}', response_model=Manager)
+@router.get('/{manager_id}/', response_model=Manager)
 def get_manager(
     manager_id: int,
     service: ManagerService = Depends()

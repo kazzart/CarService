@@ -1,4 +1,4 @@
-from fastapi import Depends, HTTPException, status
+from fastapi import Depends, HTTPException, status as stat
 from database import get_session
 from sqlalchemy.orm import Session
 from models.status import StatusCreate, Status
@@ -21,12 +21,17 @@ class StatusService:
         status = self.session.query(
             tables.Status).filter_by(id=status_id).first()
         if not status:
-            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND)
+            raise HTTPException(status_code=stat.HTTP_404_NOT_FOUND)
         return status
 
     def get_status_by_name(self, name: int) -> Status:
         status = self.session.query(
             tables.Status).filter_by(name=name).first()
         if not status:
-            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND)
+            raise HTTPException(status_code=stat.HTTP_404_NOT_FOUND)
         return status
+
+    def get_statuses(self) -> list[Status]:
+        statuses = self.session.query(
+            tables.Status).all()
+        return statuses

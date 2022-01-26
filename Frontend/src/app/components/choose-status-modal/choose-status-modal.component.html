@@ -1,0 +1,24 @@
+<div class="modal-container" *ngIf="state.chooseStatusVisible && to">
+  <div class="modal-cont">
+    <div class="cancel-button" (click)="close()">
+      <img src="assets\images\cancel.png" class="cancel-picture" alt="cancel" />
+    </div>
+    <div class="global-container">
+      <div class="container">
+        <div class="header label">Выбор статуса</div>
+        <label class="label" for="car_plate">Автомобильный номер</label>
+        <div id="car-plate">{{ to.sts.car_plate }}</div>
+        <div class="btn-wrapper">
+          <button
+            class="button"
+            *ngFor="let status of statuses"
+            (click)="choose_status(status.id, to)"
+          >
+            {{ status.name }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-background"></div>
+</div>

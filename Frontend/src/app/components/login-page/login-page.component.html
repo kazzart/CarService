@@ -2,9 +2,21 @@
   <div class="container">
     <div class="label header">Вход</div>
     <label class="label" for="login">Логин</label>
-    <input id="login" class="input" type="text" placeholder="Логин" />
+    <input
+      id="login"
+      class="input"
+      type="text"
+      placeholder="Логин"
+      [(ngModel)]="login_field"
+    />
     <label class="label" for="password">Пароль</label>
-    <input id="password" class="input" type="password" placeholder="Пароль" />
-    <button class="button">Вход</button>
+    <input
+      id="password"
+      class="input"
+      type="password"
+      placeholder="Пароль"
+      [(ngModel)]="password_field"
+    />
+    <button class="button" (click)="login()">Вход</button>
   </div>
 </div>

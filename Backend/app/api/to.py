@@ -1,14 +1,8 @@
 from fastapi import APIRouter, Depends, status
-from models.to import (
-    To,
-    ToCreate,
-    ToQuery
-)
-from services.to import ToService
-from services.manager import get_current_manager
 from models.manager import Manager
-from typing import List
-
+from models.to import To, ToCreate, ToUpdate
+from services.manager import get_current_manager
+from services.to import ToService
 
 router = APIRouter(prefix='/to')
 
@@ -19,11 +13,17 @@ def create_to(to_data: ToCreate, service: ToService = Depends(),
     return service.create_to(to_data)
 
 
+@router.patch('/{to_id}/', response_model=To)
+def change_status(to_id: int, toUpdate: ToUpdate,
+                  service: ToService = Depends()):
+    return service.change_status(to_id, toUpdate.status_id)
+
+
 @router.get('/{to_id}/', response_model=To)
 def get_to(to_id: int, service: ToService = Depends()):
     return service.get_to(to_id)
 
 
-@router.get('/all', response_model=List[To])
+@router.get('/all', response_model=list[To])
 def get_tos(service: ToService = Depends()):
     return service.get_tos()

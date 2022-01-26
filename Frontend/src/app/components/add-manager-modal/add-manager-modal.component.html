@@ -7,15 +7,27 @@
       <div class="container">
         <div class="header label">Добавление менеджера</div>
         <label class="label" for="login">Логин</label>
-        <input id="login" class="input" type="text" placeholder="Логин" />
+        <input
+          id="login"
+          class="input"
+          type="text"
+          placeholder="Логин"
+          [(ngModel)]="login_field"
+        />
         <label class="label" for="password">Пароль</label>
         <input
           id="password"
           class="input"
           type="password"
           placeholder="Пароль"
+          [(ngModel)]="password_field"
         />
-        <button class="button">Добавить</button>
+        <button
+          class="button"
+          (click)="addManager(login_field, password_field)"
+        >
+          Добавить
+        </button>
       </div>
     </div>
   </div>

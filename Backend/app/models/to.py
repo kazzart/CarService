@@ -21,5 +21,9 @@ class ToCreate(ToBase):
     status_id: int
 
 
+class ToUpdate(ToBase):
+    status_id: int
+
+
 class ToQuery(ToBase):
     pass

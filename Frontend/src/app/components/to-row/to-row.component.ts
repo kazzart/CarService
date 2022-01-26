@@ -1,5 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
+import { Status } from 'src/app/Interfaces/status';
 import { To } from 'src/app/Interfaces/to';
+import { StateModalService } from 'src/app/Shared/state-modal.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-to-row',
@@ -10,9 +14,9 @@ export class ToRowComponent implements OnInit {
   @Input() to: To | undefined;
   @Input() index: number = 0;
 
-  isExpanded: boolean = false;
+  public isExpanded: boolean = false;
 
-  constructor() {}
+  constructor(public state: StateModalService, private http: HttpClient) {}
 
   ngOnInit(): void {}
 
@@ -20,7 +24,13 @@ export class ToRowComponent implements OnInit {
     this.isExpanded = !this.isExpanded;
   }
 
-  chooseStatus() {}
+  chooseStatus(to: To) {
+    this.state.chooseStatus(to);
+  }
 
-  copyLink() {}
+  public get_to_url() {
+    navigator.clipboard.writeText(
+      'http://localhost:4200/client?id=' + this.to?.id
+    );
+  }
 }

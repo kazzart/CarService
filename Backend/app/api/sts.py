@@ -1,8 +1,7 @@
 from fastapi import APIRouter, Depends, status
 from models.sts import (
     Sts,
-    StsCreate,
-    StsQuery
+    StsCreate
 )
 from services.sts import StsService
 from services.manager import get_current_manager
@@ -23,6 +22,6 @@ def get_sts(sts_id: int, service: StsService = Depends()):
     return service.get_sts(sts_id)
 
 
-@router.get('/by_car_plate', response_model=Sts)
+@router.get('/by_car_plate/', response_model=Sts)
 def get_sts_by_car_plate(car_plate: str, service: StsService = Depends()):
     return service.get_sts_by_car_plate(car_plate)

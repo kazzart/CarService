@@ -1,5 +1,8 @@
+import { HttpClient } from '@angular/common/http';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { To } from 'src/app/Interfaces/to';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-client-page',
@@ -8,32 +11,16 @@ import { To } from 'src/app/Interfaces/to';
 })
 export class ClientPageComponent implements OnInit {
   public to: To | undefined;
+  public to_id: number = -1;
 
-  constructor() {}
+  constructor(private http: HttpClient, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.to = {
-      id: 10,
-      sts_id: 111,
-      sts: {
-        id: 111,
-        ser: '77AA',
-        number: '132421',
-        client_id: 9,
-        client: {
-          id: 9,
-          first_name: 'Артем',
-          second_name: 'Сергеев',
-          middle_name: 'Анастасович',
-          tel_number: 89859716500,
-        },
-        car_plate: 'Е999КХ777',
-        vin: 'asdfghjkl;123456',
-        model: 'Lada Kalina',
-      },
-      date: '02-01-2022',
-      status_id: 2,
-      status: { id: 999, name: 'Готово' },
-    };
+    this.to_id = +(<string>this.route.snapshot.queryParamMap.get('id'));
+    this.http
+      .get<To>(environment.url + '/to/' + this.to_id)
+      .subscribe((data) => {
+        this.to = data;
+      });
   }
 }
