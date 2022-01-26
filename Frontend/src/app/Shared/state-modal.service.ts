@@ -15,6 +15,7 @@ export class StateModalService {
   public chooseStatusVisible: boolean = false;
   public toChanged: Subject<To> = new Subject<To>();
   public toModalChanged: Subject<To> = new Subject<To>();
+  public toAdded: Subject<void> = new Subject<void>();
 
   constructor() {}
 

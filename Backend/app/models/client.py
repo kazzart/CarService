@@ -5,7 +5,7 @@ class ClientBase(BaseModel):
     first_name: str
     second_name: str
     middle_name: str
-    tel_number: int
+    tel_number: str
 
 
 class Client(ClientBase):

@@ -34,6 +34,7 @@ export class ManagerPageComponent implements OnInit {
       }
     });
     this.get_tos();
+    this.state.toAdded.subscribe(() => this.get_tos());
     this.state.toChanged.subscribe((data) => {
       for (let i = 0; i < this.tos.length; i++) {
         if (this.tos[i].id === data.id) {

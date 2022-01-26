@@ -12,8 +12,9 @@ router = APIRouter(prefix='/status')
 
 
 @router.post('/', response_model=Status, status_code=status.HTTP_201_CREATED)
-def create_sts(status_data: StatusCreate, service: StatusService = Depends(),
-               manager: Manager = Depends(get_current_manager)):
+def create_status(status_data: StatusCreate,
+                  service: StatusService = Depends(),
+                  manager: Manager = Depends(get_current_manager)):
     return service.create_status(status_data)
 
 

@@ -27,7 +27,7 @@ class ClientService:
             raise HTTPException(status_code=status.HTTP_404_NOT_FOUND)
         return client
 
-    def get_client_by_number(self, tel_number: int) -> Client:
+    def get_client_by_number(self, tel_number: str) -> Client:
         client = self.session.query(
             tables.Client).filter_by(tel_number=tel_number).first()
         if not client:

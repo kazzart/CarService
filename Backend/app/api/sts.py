@@ -17,11 +17,11 @@ def create_sts(sts_data: StsCreate, service: StsService = Depends(),
     return service.create_sts(sts_data)
 
 
+@router.get('/by_car_plate', response_model=Sts)
+def get_sts_by_car_plate(car_plate: str, service: StsService = Depends()):
+    return service.get_sts_by_car_plate(car_plate)
+
+
 @router.get('/{sts_id}/', response_model=Sts)
 def get_sts(sts_id: int, service: StsService = Depends()):
     return service.get_sts(sts_id)
-
-
-@router.get('/by_car_plate/', response_model=Sts)
-def get_sts_by_car_plate(car_plate: str, service: StsService = Depends()):
-    return service.get_sts_by_car_plate(car_plate)

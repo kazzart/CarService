@@ -18,11 +18,11 @@ def create_client(client_data: ClientCreate,
     return service.create_client(client_data)
 
 
+@router.get('/by_number/', response_model=Client)
+def get_client_by_number(tel_number: str, service: ClientService = Depends()):
+    return service.get_client_by_number(tel_number)
+
+
 @router.get('/{client_id}/', response_model=Client)
 def get_client(client_id: int, service: ClientService = Depends()):
     return service.get_client(client_id)
-
-
-@router.get('/by_number/', response_model=Client)
-def get_client_by_number(tel_number: int, service: ClientService = Depends()):
-    return service.get_client_by_number(tel_number)

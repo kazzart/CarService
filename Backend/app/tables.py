@@ -21,7 +21,7 @@ class Client(Base):
     first_name = Column(VARCHAR(30), nullable=False)
     second_name = Column(VARCHAR(30), nullable=False)
     middle_name = Column(VARCHAR(30))
-    tel_number = Column(Integer, nullable=False)
+    tel_number = Column(VARCHAR(15), nullable=False)
 
 
 class Sts(Base):
